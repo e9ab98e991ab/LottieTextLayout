@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LottieTextLayout">
+        <attr name="set_lottie_text" format="string" />
+        <attr name="set_lottie_text_size" format="integer" />
+        <attr name="set_lottie_text_color" format="integer" />
+        <attr name="set_lottie_view_json" format="integer" />
+        <attr name="set_lottie_view_width" format="integer" />
+        <attr name="set_lottie_view_height" format="integer" />
+        <attr name="set_lottie_new_visibility" format="boolean" />
+        <attr name="set_lottie_new_text" format="integer" />
+        <attr name="set_lottie_new_style" format="integer"/>
+        <attr name="set_lottie_new_position_x" format="integer" />
+        <attr name="set_lottie_new_position_y" format="integer" />
+    </declare-styleable>
+</resources>
