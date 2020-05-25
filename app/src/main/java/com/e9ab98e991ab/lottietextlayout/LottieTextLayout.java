@@ -145,11 +145,13 @@ public class LottieTextLayout extends FrameLayout {
             setTag(true);
             mTitle.setSelected(true);
             mLottieView.playAnimation();
+            mTitle.setTextColor(lottie_text_color_select);
         }else {
             setTag(false);
             mTitle.setSelected(false);
             mLottieView.setProgress(0.0f);
             mLottieView.cancelAnimation();
+            mTitle.setTextColor(lottie_text_color);
         }
     }
 
