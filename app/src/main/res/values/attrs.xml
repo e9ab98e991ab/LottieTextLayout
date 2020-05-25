@@ -3,7 +3,8 @@
     <declare-styleable name="LottieTextLayout">
         <attr name="set_lottie_text" format="string" />
         <attr name="set_lottie_text_size" format="integer" />
-        <attr name="set_lottie_text_color" format="integer" />
+        <attr name="set_lottie_text_color" format="reference|color" />
+        <attr name="set_lottie_text_color_select" format="reference|color" />
         <attr name="set_lottie_view_json" format="integer" />
         <attr name="set_lottie_view_width" format="integer" />
         <attr name="set_lottie_view_height" format="integer" />

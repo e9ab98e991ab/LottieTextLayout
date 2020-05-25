@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,7 @@ public class LottieTextLayout extends FrameLayout {
     private int lottie_new_position_y;
     private int lottie_text_size;
     private int lottie_text_color;
+    private int lottie_text_color_select;
 
     public LottieTextLayout(@NonNull Context context) {
         super(context,null);
@@ -69,32 +71,31 @@ public class LottieTextLayout extends FrameLayout {
 
     private void initAttrs(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.LottieTextLayout);
-        if (typedArray !=null){
-            this.lottie_text = typedArray.getResourceId(R.styleable.LottieTextLayout_set_lottie_text,-1);
-            this.lottie_text_size = typedArray.getDimensionPixelSize(R.styleable.LottieTextLayout_set_lottie_text_size,10);
-            this.lottie_text_color = typedArray.getResourceId(R.styleable.LottieTextLayout_set_lottie_text_color,-1);
-            this.lottie_json = typedArray.getResourceId(R.styleable.LottieTextLayout_set_lottie_view_json,-1);
-            this.lottie_new_style = typedArray.getResourceId(R.styleable.LottieTextLayout_set_lottie_new_style,-1);
-            this.lottie_new_text = typedArray.getInt(R.styleable.LottieTextLayout_set_lottie_new_text,-1);
-            this.lottie_view_width = typedArray.getInt(R.styleable.LottieTextLayout_set_lottie_view_width,-1);
-            this.lottie_view_height = typedArray.getInt(R.styleable.LottieTextLayout_set_lottie_view_height,-1);
-            this.lottie_new_position_x = typedArray.getInt(R.styleable.LottieTextLayout_set_lottie_new_position_x,-1);
-            this.lottie_new_position_y = typedArray.getInt(R.styleable.LottieTextLayout_set_lottie_new_position_y,-1);
+        this.lottie_text = typedArray.getResourceId(R.styleable.LottieTextLayout_set_lottie_text,-1);
+        this.lottie_text_size = typedArray.getDimensionPixelSize(R.styleable.LottieTextLayout_set_lottie_text_size,10);
+        this.lottie_text_color = typedArray.getColor(R.styleable.LottieTextLayout_set_lottie_text_color,-1);
+        this.lottie_text_color_select = typedArray.getColor(R.styleable.LottieTextLayout_set_lottie_text_color_select,-1);
+        this.lottie_json = typedArray.getResourceId(R.styleable.LottieTextLayout_set_lottie_view_json,-1);
+        this.lottie_new_style = typedArray.getResourceId(R.styleable.LottieTextLayout_set_lottie_new_style,-1);
+        this.lottie_new_text = typedArray.getInt(R.styleable.LottieTextLayout_set_lottie_new_text,-1);
+        this.lottie_view_width = typedArray.getInt(R.styleable.LottieTextLayout_set_lottie_view_width,-1);
+        this.lottie_view_height = typedArray.getInt(R.styleable.LottieTextLayout_set_lottie_view_height,-1);
+        this.lottie_new_position_x = typedArray.getInt(R.styleable.LottieTextLayout_set_lottie_new_position_x,-1);
+        this.lottie_new_position_y = typedArray.getInt(R.styleable.LottieTextLayout_set_lottie_new_position_y,-1);
 
-            typedArray.recycle();
-            mTitle.setTextSize(lottie_text_size);
-            if (lottie_text_color!=-1){
-                mTitle.setTextColor(lottie_text_color);
-            }
-            setLottieNewStyle(lottie_new_style);
-            setSelected(lottie_json,lottie_text);
-            setNewsSelected(lottie_new_text);
+        typedArray.recycle();
+        mTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX,lottie_text_size);
+        if (lottie_text_color!=-1){
+            mTitle.setTextColor(lottie_text_color);
         }
+        setLottieNewStyle(lottie_new_style);
+        setSelected(lottie_json,lottie_text);
+        setNewsSelected(lottie_new_text);
+        setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
         setOnClickListener(v -> {
             setChecked();
         });
     }
-
 
     public void setSelectAnimator(boolean isSelected, NavItem navItem) {
         if (isSelected) {
@@ -142,9 +143,11 @@ public class LottieTextLayout extends FrameLayout {
     public void setChecked() {
         if (getTag() ==null || !(boolean)getTag()){
             setTag(true);
+            mTitle.setSelected(true);
             mLottieView.playAnimation();
         }else {
             setTag(false);
+            mTitle.setSelected(false);
             mLottieView.setProgress(0.0f);
             mLottieView.cancelAnimation();
         }

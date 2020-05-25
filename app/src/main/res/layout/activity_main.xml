@@ -155,11 +155,17 @@
 
         <com.e9ab98e991ab.lottietextlayout.LottieTextLayout
             android:id="@+id/lottie"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:set_lottie_text="@string/app_name"
             android:layout_gravity="center"
+            app:set_lottie_text_color="@color/color_999C9F"
+            app:set_lottie_text_color_select="@color/color_111111"
+            app:set_lottie_view_width="24"
+            app:set_lottie_view_height="24"
             app:set_lottie_view_json="@raw/home"
-            app:set_lottie_new_style="@drawable/shape_circle_default"/>
+            app:set_lottie_text_size="@dimen/sp_10"
+            app:set_lottie_new_style="@drawable/shape_circle_default"
+          />
     </LinearLayout>
 </layout>

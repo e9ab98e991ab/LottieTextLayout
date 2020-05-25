@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center" >
+    android:gravity="center"
+    android:orientation="vertical">
 
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/icon"
         android:layout_width="23dp"
         android:layout_height="23dp"
-        />
+        android:src="@raw/home"/>
 
     <View
         android:id="@+id/view"
         android:layout_width="28dp"
         android:layout_height="23dp"
-        android:visibility="gone"
-        />
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/item_view"
@@ -25,25 +24,31 @@
         android:layout_height="14dp"
         android:layout_alignEnd="@+id/view"
         android:background="@drawable/shape_circle_red"
-        android:text=""
-        android:textColor="#FFF"
         android:gravity="center"
-        android:textSize="9sp"
+        android:includeFontPadding="false"
+        android:lineSpacingMultiplier="0.1"
+        android:minWidth="14dp"
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
         android:paddingBottom="1dp"
-        android:minWidth="14dp"
-        android:visibility="gone"
-        />
+        android:text=""
+        android:textColor="#FFF"
+        android:textSize="9sp"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/icon"
-        android:gravity="center"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:text="2222"
+        android:includeFontPadding="false"
+        android:lineSpacingMultiplier="0.1"
         android:layout_alignStart="@+id/icon"
         android:layout_alignEnd="@+id/icon"
+        android:gravity="center"
         android:textSize="@dimen/sp_10" />
 
 </RelativeLayout>
